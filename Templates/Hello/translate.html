@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}翻译结果{% endblock %}
+
+{% block content %}
+<h3>翻译结果</h3>
+<div class="translateResult">
+<table width="400">
+        <tr>
+        <td width="200" style="font-weight:bold;font-size:14px;">行数</td>
+        <td width="200" style="font-weight:bold;font-size:14px;">原国家</td>
+        <td width="200" style="font-weight:bold;font-size:14px;">翻译结果</td>
+        <tr>
+    {% for value in country %}
+        <tr>
+        <td width="200">第 {{ value.row }} 行</td>
+        <td width="200">{{ value.orginal }}</td>
+        <td width="200">{{ value.result }}</td>
+        <tr>
+    {% endfor %}
+</table>
+</div>
+{% endblock %}
+
+
+

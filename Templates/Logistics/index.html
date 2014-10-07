@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block title %}单号管理{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h2>国际物流单号管理</h2>
+<h4><a href="/logisticsNo/upload/">单号导入</a> <a href="/logisticsNo/apply/">单号申请</a></h4>
+<div class="logisticsNo" style="margin:10px 0">
+    <form method="post" action="">
+     {% csrf_token %}
+        <select name="status">
+            <option value="1">已使用</option>
+            <option value="0">未使用</option>
+        </select>
+        <input type="submit" value="查询">
+    </form>
+    {% if listNo %}
+        {% for value in listNo %}
+           {{value.logisticsNo}} {% ifnotequal value.flag "0" %} <span style="color:red">已使用</span> {% else %}未使用{% endifnotequal %}<br>
+
+        {% endfor %}
+                <div class="pagination">
+    <span class="step-links">
+        {% if listNo.has_previous %}
+            <a href="?page={{ listNo.previous_page_number }}">上一页</a>
+        {% endif %}
+
+        <span class="current">
+            共有{{ listNo.paginator.num_pages }} 页, 当前第 {{ listNo.number }} 页
+        </span>
+
+        {% if listNo.has_next %}
+            <a href="?page={{ listNo.next_page_number }}">下一页</a>
+        {% endif %}
+    </span>
+</div>
+
+    {% else %}
+        <p class="notice">暂时未查询到您所需要的单号</p>
+    {% endif %}
+</div>
+
+
+
+{% else %}
+	        <p>你还没登陆注册。</p>
+	        <a href="/accounts/login">登录</a>
+	        <a href="/accounts/register">注册</a>
+	    {% endif %}
+{% endblock %}

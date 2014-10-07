@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}国家名翻译{% endblock %}
+
+{% block content %}
+
+<h3>{{ translateCountry }}</h3>
+<div class="logisticsNoManage">
+    <form action="" method="POST">
+        <p>待翻译国家：<textarea rows="10" cols="100" name="country"></textarea></p>
+            <P style="margin-top:20px;margin-bottom:20px;">翻译语言：
+    <select name="language">
+            <option value="en2zh">翻译成中文</option>
+            <option value="zh2en">翻译成英文</option>
+        </select>
+    </P>
+        <p><input type="submit" value="翻译" name="submit" class="btn-submit"></p>
+    </form>
+</div>
+
+{% endblock %}
+
+
+

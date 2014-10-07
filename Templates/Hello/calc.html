@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}运费计算模块{% endblock %}
+{% block content %}
+
+<h3>{{ translateCountry }}</h3>
+<div class="logisticsNoManage">
+    <p style="padding:10px 0">注意事项：本计算规则为三行，请从excel表格中复制，需要的信息为单号，国家简码，重量</P>
+    <form action="" method="POST">
+     {% csrf_token %}
+        <p>待计算区域：<textarea rows="10" cols="100" name="calcArea"></textarea></p>
+        <p style="margin-top:10px">待计算折扣：<input type="text" name="discount" onkeyup="value=value.replace(/[^\d]/g,'')" id="discount" value="100">
+        <p style="margin-top:10px"><input type="submit" value="开始计算" name="submit" class="btn-submit"></p>
+    </form>
+</div>
+
+{% endblock %}
+
+
+

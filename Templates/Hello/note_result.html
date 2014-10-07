@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}批量备注{% endblock %}
+
+{% block content %}
+
+</script> 
+<h3>{{ translateCountry }}</h3>
+<div class="logisticsNoManage">
+{% for value in listMessage %}
+    {{ value }}<br><br>
+{% endfor %}
+</div>
+<a href="/batchNote" style="font-size:14px;color:red">点此返回继续处理</a>
+{% endblock %}
+
+
+

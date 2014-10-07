@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="/static/reset.css">
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+</head>
+<body>
+    {% block header %}
+    <div id="header" class="clearfix">
+        <a id="logo" href="http://127.0.0.1:8000/accounts/">6LS Express</a>
+        <ul id="navigation">
+          <li class="active"><a href="/">首页</a></li>
+          <li><a href="/translate/">国家名翻译</a></li>
+          <li><a href="/logisticsNo/">申请单号</a></li>
+          <li><a href="/billCalc/">邮局账单价格计算</a></li>
+          <li><a href="/batchNote/">批量备注</a></li>
+        </ul>
+    </div>
+    {% endblock %} 
+
+    <div id="container" class="clearfix box">
+
+            <div id="main">
+                {% block content %}{% endblock %}
+            </div>
+        
+    </div>
+    <div id="footer">
+        <div class="clearfix">
+            <P align="center"><a href="/">首页</a> | <a href="/help">帮助文档</a> | <a href="#">版权声明</a>   {% if user.is_authenticated %}
+                   |        <span class="name">{{ user.username }}</span>                   
+                    <a class="logout" href="/accounts/logout"><i></i>注销</a>            
+        {% endif %}</p>
+        </div>
+    </div>
+</body>
+</html>

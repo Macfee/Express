@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %} 邮局账单运费计算 {% endblock %}
+
+{% block content %}
+<h3>计算结果</h3>
+<div class="translateResult">
+<table width="940" border="0">
+  <tr>
+    <td style="font-size:14px;font-weight:bold" width="115">行数</td>
+    <td style="font-size:14px;font-weight:bold" width="115">单号</td>
+    <td style="font-size:14px;font-weight:bold" width="115">国家</td>
+    <td  style="font-size:14px;font-weight:bold" width="115">折扣后价格</td>
+    <td  style="font-size:14px;font-weight:bold" width="115">币种</td>
+    <td  style="font-size:14px;font-weight:bold" width="115">实际重量</td>
+    <td  style="font-size:14px;font-weight:bold" width="115">公布价</td>
+    <td  style="font-size:14px;font-weight:bold" width="115">折扣</td>
+  </tr>
+    {% for value in priceSheet %}
+        
+  <tr>
+    <td width="115">{{ value.row }}</td>
+    <td width="115">{{ value.logistics }}</td>
+    <td  width="115">{{ value.country }}</td>
+    <td  width="115">{{ value.price }}</td>
+    <td  width="115">{{ value.currency }}</td>
+    <td  width="115">{{ value.weight }}</td>
+    <td  width="115">{{ value.pubPrice }}</td>
+    <td width="115">{{ value.discount }}</td>
+  </tr>
+
+    {% endfor %}
+    </table>
+</div>
+{% endblock %}
+
+
+

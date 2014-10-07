@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block title %}用户中心{% endblock %}
+
+{% block content %}
+<div class="people">
+    <h2>用户中心</h2>
+    <p id="welcome">
+	    {% if user.is_authenticated %}
+	        欢迎您，{{ user.username|capfirst }}
+	        <a href="/accounts/logout">注销</a>
+	    {% else %}
+	        <p>你还没登陆注册。</p>
+	        <a href="/accounts/login">登录</a>
+	        <a href="/accounts/register">注册</a>
+	    {% endif %}
+    </p>
+</div>
+{% endblock %}

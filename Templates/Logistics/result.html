@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}上传单号{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+
+<h3>{{ title }}</h3>
+
+<style type="text/css">
+
+.btn-submit {cursor: pointer;color: white;background: #3FA156;border: 1px solid #528641;font-size: 14px;font-weight: bold;padding: 3px 20px;border-radius: 3px; -moz-border-radius: 3px;-webkit-border-radius: 3px;width:120px;}
+
+.uploadLogisticsNo{
+    padding:10px;
+    border:1px solid #ccc;
+}
+
+.logisticsNoManage{
+    padding:10px;
+    border:1px solid #ccc;
+}
+
+</style>
+<div class="uploadLogisticsNo">
+            
+            {% for value in data %}
+                <p>{{ value.logisticsNo }} {{ value.applyTime | date:"Y-m-d H:m:s" }} {{ value.user}}<p><br>
+            {% endfor %}
+
+</div>
+
+
+{% else %}
+	        <p>你还没登陆注册。</p>
+	        <a href="/accounts/login">登录</a>
+	        <a href="/accounts/register">注册</a>
+	    {% endif %}
+{% endblock %}
